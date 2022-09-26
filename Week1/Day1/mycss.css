@@ -1,0 +1,35 @@
+body {
+	background-color: powderblue;
+}
+
+
+p {
+	color: red;
+}
+
+.important_p {
+	color: green;
+}
+
+
+a {
+	color: blue;
+}
+
+a:hover {
+	color: white;
+}
+
+#myid {
+	color: black;
+}
+
+div {
+	border: 2px solid black;
+	/*display: inline-block*/
+	padding: 10px;
+}
+
+/*.movable {
+	position: absolute;
+}*/
