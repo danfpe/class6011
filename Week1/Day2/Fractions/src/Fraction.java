@@ -9,8 +9,15 @@ public class Fraction {
 
     // constructor with parameters
     public Fraction( long n, long d ){
-        numerator = n;
-        denominator = d;
+        if ((n > 0 && d < 0) || (n < 0 && d < 0)){
+            numerator = n * -1;
+            denominator = d * -1;
+        }
+        else {
+            numerator = n;
+            denominator = d;
+        }
+
     }
 
     public long getNumerator() {
