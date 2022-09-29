@@ -15,6 +15,7 @@ public class Rainfall {
     }
     public void readLine() throws IOException {
         int lineNumber = 1;
+        double sum = 0;
         HashMap<String, ArrayList<Double>> dataMap = new HashMap<>();
         while (fileReader.hasNextLine()) {
             String line = fileReader.nextLine();
@@ -26,14 +27,21 @@ public class Rainfall {
                 double value = Double.parseDouble(arrOfStr[2]);
                 dataMap.computeIfAbsent(key, k -> new ArrayList<Double>());
                 dataMap.get(key).add(value);
+                sum += value;
             }
             lineNumber++;
         }
+
+        System.out.println("The overall average rainfall amount is " + sum/(lineNumber-2) + " inches");
 
         writeResult(dataMap);
     }
 
     public double calcAverage(ArrayList<Double> rainArray) {
+        if (rainArray == null) {
+            return 0;
+        }
+
         double sum = 0.0;
         for(double rain: rainArray) {
             sum += rain;
@@ -43,6 +51,11 @@ public class Rainfall {
     }
 
     public void writeResult(HashMap<String, ArrayList<Double>> dataMap) throws IOException {
+        if (dataMap == null) {
+            return;
+        }
+
+//        System.out.println(totalAverage(dataMap));
         FileWriter writer = new FileWriter("result.txt");
         for(String key : dataMap.keySet()) {
             ArrayList<Double> rainArray = dataMap.get(key);
