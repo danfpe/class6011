@@ -9,15 +9,18 @@ public class Fraction {
 
     // constructor with parameters
     public Fraction( long n, long d ){
-        if ((n > 0 && d < 0) || (n < 0 && d < 0)){
-            numerator = n * -1;
-            denominator = d * -1;
+        try {
+            float result = n/d;
+            if (d < 0) {
+                numerator = n * -1;
+                denominator = d * -1;
+            } else {
+                numerator = n;
+                denominator = d;
+            }
+        } catch (ArithmeticException e){
+            System.out.println("Exception msg: " + e.getMessage());
         }
-        else {
-            numerator = n;
-            denominator = d;
-        }
-
     }
 
     public long getNumerator() {
@@ -108,15 +111,21 @@ public class Fraction {
     }
 
     public Fraction dividedBy(Fraction rhs) {
-        if ((denominator == 0) || (rhs.numerator == 0)) {
-            System.out.println("denominator is invalid");
+//        if ((denominator == 0) || (rhs.numerator == 0)) {
+//            System.out.println("denominator is invalid");
+//            return null;
+//        }
+        try {
+            Fraction result = new Fraction();
+            result.numerator = numerator * rhs.denominator;
+            result.denominator = denominator * rhs.numerator;
+            result = result.reduce();
+            return result;
+        }
+        catch (ArithmeticException e) {
+            System.out.println("Division Exception Msg: " + e.getMessage());
             return null;
         }
-        Fraction result = new Fraction();
-        result.numerator = numerator*rhs.denominator;
-        result.denominator = denominator*rhs.numerator;
-        result = result.reduce();
-        return result;
     }
 
     public Fraction reciprocal() {
