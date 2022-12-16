@@ -90,13 +90,11 @@ public class ClientHandlerRunnable implements Runnable {
         try {
             DataInputStream inputStream = new DataInputStream(this.clientSocket_.getInputStream());
             byte[] first2Bytes = inputStream.readNBytes(2);
-//            boolean var3 = (first2Bytes[0] & 128) > 0;
             int lower8bits = first2Bytes[0] & 15;
             if (lower8bits == 8) {
                 throw new Exception("Connection Closed");
             }
 
-//            boolean var5 = (first2Bytes[1] & 128) != 0;
             long higher8bits = (long)(first2Bytes[1] & 127);
             if (higher8bits == 126L) {
                 higher8bits = (long)inputStream.readUnsignedShort();
@@ -251,19 +249,6 @@ public class ClientHandlerRunnable implements Runnable {
                 this.headers_.put(headerList[0].toLowerCase(), headerList[1]);
             }
         }
-
-//        boolean var7 = false;
-//        if (var7) {
-//            System.out.println("Header fields:");
-//            Iterator entryIterator = this.headers_.entrySet().iterator();
-//
-//            while(entryIterator.hasNext()) {
-//                Map.Entry nextEntry = (Map.Entry)entryIterator.next();
-//                PrintStream out = System.out;
-//                String key = (String)nextEntry.getKey();
-//                out.println("\t" + key + ": " + (String)nextEntry.getValue());
-//            }
-//        }
 
     }
 }
