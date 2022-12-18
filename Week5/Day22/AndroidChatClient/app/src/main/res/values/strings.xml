@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">AndroidChatClient</string>
+    <string name="login_page">Login</string>
+    <string name="Username">UserName</string>
+    <string name="LOGIN">Button</string>
+    <string name="Login">Login</string>
+    <string name="NameOfRoom">Room</string>
+    <string name="RoomName">Room</string>
+    <string name="Room">TextView</string>
+    <string name="Send">Send</string>
+    <string name="message">Message</string>
+    <string name="room">Room:</string>
+    <string name="EnterMessage">Enter Message</string>
+    <string name="ChatRoom">TextView</string>
+    <string name="enter_message">Enter message</string>
+    <string name="room_name">Room</string>
+    <string name="Message">hint</string>
+    <string name="RoomChat">TextView</string>
+    <string name="send">Send</string>
+    <string name="mymessage">message</string>
+
+</resources>
